@@ -18,7 +18,7 @@ public:
         int left = i * 2 + 1;
         int right = i * 2 + 2;
         int largest = i;
-        if (left < n && nums[left] > nums[largest]) {
+        if (left < n && nums[left] > nums[la	rgest]) {
             largest = left;
         }
         if (right < n && nums[right] > nums[largest]) {
