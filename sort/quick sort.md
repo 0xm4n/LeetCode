@@ -3,23 +3,26 @@
 class Solution {
 public:
     vector<int> sortArray(vector<int>& nums) {
-        quickSort(nums, 0, nums.size() - 1);
+        quicksort(nums, 0, nums.size() - 1);
         return nums;
     }
     
-    void quickSort(vector<int>& nums, int left, int right) {
+    void quicksort(vector<int>& nums, int left, int right) {
         if (left >= right) return;
-        int pivot = nums[left], i = left + 1, j = right;
+        int mid = left + (right - left) / 2;
+        swap(nums[mid], nums[left]);
+        int pivot = nums[left];
+        int i = left + 1, j = right;
         while (i <= j) {
             if (nums[i] > pivot && nums[j] < pivot) {
-                std::swap(nums[i++], nums[j--]);
+                swap(nums[i++], nums[j--]);
             }
             if (nums[i] <= pivot) ++i;
             if (nums[j] >= pivot) --j;
         }
-        std::swap(nums[left], nums[j]);
-        quickSort(nums, left, j - 1);
-        quickSort(nums, j + 1, right);
+        swap(nums[left], nums[j]);
+        quicksort(nums, left, j - 1);
+        quicksort(nums, j + 1, right);
     }
 };
 ```
